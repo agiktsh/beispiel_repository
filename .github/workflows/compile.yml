@@ -3,7 +3,9 @@ name: ILI-Compile
 on:
   pull_request:
       branches:
-        - main   # oder dein Ziel-Branch
+        - main
+
+  workflow_dispatch:
 
 jobs:
   compile-model:
