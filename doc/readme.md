@@ -85,13 +85,17 @@ Vorgehen:
 
 ### 4. Neuer Ordner und Dateien anlegen
 
-Zweck: Neue Elemente in die Code-Verwaltung aufnehmen
+Zweck: Aktuellste Änderungen vom remote-Repository beziehen und neue Elemente in die Code-Verwaltung aufnehmen
 
 Vorgehen:
 
+1. Bevor wir beginnen Änderungen umzusetzen, stellen wir mit einem sog. Pull sicher, dass wir alle aktuellsten Änderungen aus dem remote-Repository lokal haben. Dazu kann in VSC unter Source Control der Synchronize-Button oder über ... der Befehl 'Pull' aufgerufen werden. 
 1. Lege über den Explorer einen neuen Ordner namens ```config``` an
 2. Lege anschliessend innerhalb dieses Ordners eine neue Datei mit dem Namen ```valid-<NAME>.config``` an (wobei <NAME> Deinem Vornamen entspricht)
 3. Kontrolle in 'Source control' die durch Git festgestellten Änderungen im lokalen Repo
+
+Hinweis:
+Die Synchronize-Funktion führt eine bidirektionale Aktualisierung durch. Es gibt also gleichzeitig einen Push und einen Pull.
 
 ### 5. Änderungen committen
 
@@ -248,6 +252,7 @@ Vorgehen:
 | Branch        | Ein Entwicklungszweig, welcher eine sichere, entkoppelte und damit unabhängige Modifikation oder Weiterentwicklung ermöglicht | 
 | Commit        | Lokales Festschreiben einer Modifikation zusammen mit einer Bemerkung  | 
 | Push        | Übertragen der lokalen Commits auf das remote-Repository  | 
+| Pull        | Aktuellste Änderungen aus einem spezifischen Branch des remote-Repository lokal beziehen  | 
 | PullRequest        | Anfrage an die am Code-Archiv Beteiligten, eine Anpassung auf einem Branch in einen anderen zu übernehmen | 
 | Merge        | Zusammenführen der Anpassungen aus verschiedenen Entwicklungsästen | 
 | Stash        | Möglichkeit, lokale Änderungen von einem Commit auszunehmen und für ein späteren Commit vorzusehen |
