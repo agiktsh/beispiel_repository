@@ -183,13 +183,9 @@ Hinweis:
 CodeReviews-Kommentare werden häufig mit einem Präfix versehen, welcher den Hinweis grob kategorisiert:
 
 * NIT: („Nitpick“) -> Kleinigkeit, keine Pflichtänderung. (Beispiel: NIT: Variable name could be shorter.)
-
 * SUG: („Suggestion“) -> Vorschlag, den man übernehmen kann, aber nicht muss. (Beispiel: SUG: Consider using a switch here for clarity.)
-
 * PP: („Personal Preference“) -> Persönliche Vorliebe des Reviewers, kein Muss. (Beispiel: PP: I’d write this function inline, but that’s up to you.)
-
 * NB: („Nota Bene“ / „Beachte“) -> Hinweis auf etwas Wichtiges, das man im Kopf behalten sollte. (Beispiel: NB: This library is deprecated in newer versions.)
-
 * BLOCK: oder MUST: -> Kritischer Punkt – sollte vor dem Merge geändert werden. (Beispiel: BLOCK: This query will fail on null values.)
 
 
@@ -200,29 +196,62 @@ Zweck: Hat ein PullRequest den Review überstanden, können die Änderungen aus 
 Vorgehen:
 
 1. Sofern keine sog. Merge-Konflikte bestehen, erscheint auf der Seite des PullRequests nun die Option, den PullRequest zu mergen und zu schliessen.
+2. Zusätzlich zu den Approvals prüft GitHub mittels einer Action, dass die Modelldatei nach dem Merge fehlerfrei kompiliert. Dies wird mittels einer GitHub Action automatisiert. Mehr dazu im nächsten Schritt. 
 
 
 ### 12. GitHub Actions für automatische Kompilierung integrieren
 
+Zweck: GitHub Actions übernimmt uns automatisierbare, wiederkehrende Aufgaben welche im Modifikationsprozess notwendig sind. Dazu zählen beispielsweise INTERLIS Kompilierung, Nachführung des Model-Repos oder auch Mitteilungen oder Dateitransfers.
 
+Hinweis:
 
+Die in unserem Beispiel integrierte Action ist in der Datei .\.github\workflows\compile.yml definiert. Sie umfasst im wesentlichen die Information zum auslösenden Ereignis (Trigger) sowie die deatillierten Ausführungsschritte (steps):
 
+```yml
+name: ILI-Compile                           # Name des Workflows
 
-## Begriffe
+on:                                         # Auslösende Ereignisse
+  pull_request:
+      branches:
+        - main
+
+  workflow_dispatch:
+
+jobs:                                       # Auflistung der Jobs
+  compile-model:
+    runs-on: ubuntu-latest
+
+    steps:                                  # Definition der einzelnen Schritte im Job
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v3
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: Run ILI-Compile
+        run: java -jar ./_Runner/ili2c/ili2c.jar ./SH_Pflegeplanung_Fliessgewaesser_V2_0.ili
+```
+
+Vorgehen:
+1. Für eine manuelle Ausführung der Action können wir unter https://github.com/agiktsh/beispiel_repository/actions/workflows/compile.yml unter 'Run workflow...' den Workflow ausführen
+2. Die Ausführung dauert rund 10s und findet auf dem GitHub Server statt. Wir benötigen dafür also keinerlei spezifische Software. In der Bedienoberfläche werden während und auch nach der Ausführung Details zu allen ausgeführten Schritte aufgeführt:![alt text](image-2.png)
+3. Im Falle, dass die Kompilierung erfolgreich durchläuft, erscheint der Workfloww als 'succeeded' und ist grün markiert.
+
+## Begriffe rund um GitHub
 
 | Begriff        | Bedeutung                 | 
 | -------------- | ------------------------- | 
-| Klonen        |     | 
-| Branch        |     | 
-| Commit        |     | 
-| Merge        |     | 
-| PullRequest        |     | 
-
-## Erweiterte Aspekte
-
-### Konfliktmanagement
-
-### GitHub Actions
+| Klonen        | Eine vollständige, lokale Kopie eines remote-Repository anlegen. | 
+| Branch        | Ein Entwicklungszweig, welcher eine sichere, entkoppelte und damit unabhängige Modifikation oder Weiterentwicklung ermöglicht | 
+| Commit        | Lokales Festschreiben einer Modifikation zusammen mit einer Bemerkung  | 
+| Push        | Übertragen der lokalen Commits auf das remote-Repository  | 
+| PullRequest        | Anfrage an die am Code-Archiv Beteiligten, eine Anpassung auf einem Branch in einen anderen zu übernehmen | 
+| Merge        | Zusammenführen der Anpassungen aus verschiedenen Entwicklungsästen | 
+| Stash        | Möglichkeit, lokale Änderungen von einem Commit auszunehmen und für ein späteren Commit vorzusehen |
+| GitHub Action        | Automatisierungs-Möglichkeit bei GitHub für wiederkehrende Aufgaben im Zusammenhang mit Modifikation |  
 
 
 ### Arbeitsaufträge
