@@ -1,0 +1,21 @@
+name: ILI-Compile
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test-failcases:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v3
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: Run ILI-Compile
+        run: java -jar ./_Runner/ili2c/ili2c.jar ./SH_Pflegeplanung_Fliessgewaesser_V2_0.ili
