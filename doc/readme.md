@@ -256,6 +256,7 @@ Vorgehen:
 | PullRequest        | Anfrage an die am Code-Archiv Beteiligten, eine Anpassung auf einem Branch in einen anderen zu übernehmen | 
 | Merge        | Zusammenführen der Anpassungen aus verschiedenen Entwicklungsästen | 
 | Stash        | Möglichkeit, lokale Änderungen von einem Commit auszunehmen und für ein späteren Commit vorzusehen |
+| Fork        | Kopie eines Git-Repositories (Code + Historie) und unabhängig vom Original |
 | GitHub Action        | Automatisierungs-Möglichkeit bei GitHub für wiederkehrende Aufgaben im Zusammenhang mit Modifikation |  
 
 
