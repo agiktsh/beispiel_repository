@@ -440,7 +440,7 @@ AT "http://geo.sh.ch" VERSION "2024-12-06" =
     END BauwerkMoebilierungInstandsetzungAssoc;
 
     ASSOCIATION BauwerkMoebilierungBauwerkgsmoeblierungskontrolleAssoc =
-      BauwerkMoebilierung -<#> {1} BauwerkMoebilierung;
+      BauwerkMoebilierung -<> {1} BauwerkMoebilierung;
       Bauwerkgsmoeblierungskontrolle -- {0..*} Bauwerkgsmoeblierungskontrolle;
     END BauwerkMoebilierungBauwerkgsmoeblierungskontrolleAssoc;
 
