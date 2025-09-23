@@ -196,7 +196,7 @@ AT "http://geo.sh.ch" VERSION "2024-12-06" =
       Beschreibung: TEXT*200;
       Inaktiv: MANDATORY INTERLIS.BOOLEAN;
       !!@ ilivalid.msg_de = "Verletzt Eindeutigkeit {Aktivitaet}"
-      UNIQUE Aktivitaet;
+      UNIQUE Aktivitaet, Inaktiv;
     END FaunaVorgehen_Code;
 
     CLASS Intervall_Code
