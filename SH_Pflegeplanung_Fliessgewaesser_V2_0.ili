@@ -69,7 +69,7 @@ AT "http://geo.sh.ch" VERSION "2024-12-06" =
 
     CLASS Kalendermonat_Code
     EXTENDS CatalogueObjects_V2.Catalogues.Item =
-      Monat: MANDATORY 1 .. 12 [INTERLIS.M];
+      Monat: MANDATORY 1 .. 6 [INTERLIS.M];
       Bezeichnung: TEXT*10;
       !!@ ilivalid.msg_de = "Verletzt Eindeutigkeit {Monat}"
       UNIQUE Monat;
