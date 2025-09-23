@@ -91,7 +91,7 @@ AT "http://geo.sh.ch" VERSION "2024-12-06" =
     CLASS Arbeitsart_Code
     EXTENDS CatalogueObjects_V2.Catalogues.Item =
       Ausfuehrung: MANDATORY TEXT*50;
-      Beschreibung: TEXT*200;
+      Beschreibung: TEXT*250;
       Inaktiv: MANDATORY INTERLIS.BOOLEAN;
       !!@ ilivalid.msg_de = "Verletzt Eindeutigkeit {Ausfuehrung}"
       UNIQUE Ausfuehrung;
