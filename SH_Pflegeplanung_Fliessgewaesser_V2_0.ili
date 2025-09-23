@@ -105,7 +105,7 @@ AT "http://geo.sh.ch" VERSION "2024-12-06" =
     EXTENDS CatalogueObjects_V2.Catalogues.Item =
       Pflegeziel: MANDATORY TEXT*50;
       Beschreibung: TEXT*200;
-      Inaktiv: MANDATORY INTERLIS.BOOLEAN;
+      Inaktiv: INTERLIS.BOOLEAN;
       !!@ ilivalid.msg_de = "Verletzt Eindeutigkeit {Pflegeziel}"
       UNIQUE Pflegeziel;
     END Pflegeziel_Code;
