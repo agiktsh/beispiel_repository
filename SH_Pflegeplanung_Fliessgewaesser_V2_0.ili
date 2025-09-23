@@ -332,7 +332,7 @@ AT "http://geo.sh.ch" VERSION "2024-12-06" =
       Baujahr: 1800 .. 2199 [INTERLIS.Y];
       Baumaterial: BAG {0..*} OF SH_Pflegeplanung_Fliessgewaesser_V2_0.Codeliste.Baumaterial_CodeRef;
       Unterhaltsintervall: REFERENCE TO (EXTERNAL) SH_Pflegeplanung_Fliessgewaesser_V2_0.Codeliste.Intervall_Code;
-      Kontrollmassnahme: BAG {0..*} OF SH_Pflegeplanung_Fliessgewaesser_V2_0.Codeliste.Kontrollmassnahmen_CodeRef;
+      Kontrollmassnahme: BAG {0..9} OF SH_Pflegeplanung_Fliessgewaesser_V2_0.Codeliste.Kontrollmassnahmen_CodeRef;
       Bemerkung: MTEXT;
       ErfasstAm: INTERLIS.XMLDate;
       Zustaendigkeit: REFERENCE TO (EXTERNAL) SH_Pflegeplanung_Fliessgewaesser_V2_0.Codeliste.Zustaendigkeiten_Code;
