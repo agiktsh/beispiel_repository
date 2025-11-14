@@ -377,7 +377,7 @@ AT "http://geo.sh.ch" VERSION "2024-12-06" =
       Massnahme: BAG {0..*} OF SH_Pflegeplanung_Fliessgewaesser_V2_0.Codeliste.Pflege_CodeRef;
       Arbeitsart: BAG {0..*} OF SH_Pflegeplanung_Fliessgewaesser_V2_0.Codeliste.Arbeitsart_CodeRef;
       Zustaendigkeit: REFERENCE TO (EXTERNAL) SH_Pflegeplanung_Fliessgewaesser_V2_0.Codeliste.Zustaendigkeiten_Code;
-      Bemerkung: MTEXT;
+      Bemerkungen: MTEXT;
       Datei: BAG {0..*} OF Datei;
       ErfasstAm: INTERLIS.XMLDate;
       AusgefuehrtAm: INTERLIS.XMLDate;
